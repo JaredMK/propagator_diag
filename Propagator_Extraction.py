@@ -1,10 +1,7 @@
 import pandas as pd
 import os
-#import glob
-#from pandas import DataFrame
 import xlsxwriter
 import re
-#import xlrd
 import matplotlib.pyplot as plt
 
 colFile=0
