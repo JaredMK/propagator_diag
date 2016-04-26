@@ -1,8 +1,6 @@
-import pandas as pd
 import os
 import xlsxwriter
 import re
-import matplotlib.pyplot as plt
 
 colFile=0
 colMolecule=1
@@ -153,7 +151,7 @@ def dataExtract(path):
     for path, subdirs, files in os.walk(path+propagatorFilesFolder):
         for name in files:
             if os.path.join(path, name)[len(os.path.join(path, name))-\
-            4:len(os.path.join(path, name))]=='.txt':
+            4:len(os.path.join(path, name))]=='.log':
                 logFiles.append(os.path.join(path, name)) 
     
     for currentFile in logFiles: 
