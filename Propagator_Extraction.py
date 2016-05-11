@@ -1,6 +1,11 @@
 import os
 import xlsxwriter
 import re
+import openpyxl
+
+#TO BE CHANGED
+'''folder containing the propagator files'''
+propagatorFilesFolder='/Jared_Propa'
 
 colFile=0
 colMolecule=1
@@ -15,6 +20,7 @@ colHF=9
 colOVGF_A=10
 colOVGF_A_ps=11
 colOVGF_B=12
+
 colOVGF_B_ps=13
 colOVGF_C=14
 colOVGF_C_ps=15
@@ -34,8 +40,6 @@ colP3_HF=28
 colP3_plus_HF=29
 colD2_HF=30
 
-
-
 '''path to this file'''
 path=os.path.dirname(os.path.realpath(__file__))
 #/Users/Jared/Dropbox/Auburn/Research/Second_Research/Propagator
@@ -43,8 +47,7 @@ path=os.path.dirname(os.path.realpath(__file__))
 '''excel file name to open with path'''
 excelFilePathName='/propagatorFilesExcel.xlsx'
 
-'''folder containing the propagator files'''
-propagatorFilesFolder='/Jared_Propa'
+
 
 row=1
 
