@@ -1,5 +1,4 @@
 import os
-#import xlsxwriter
 import re
 import openpyxl
 workbook = openpyxl.Workbook()  #creates openpyxl workbook
@@ -43,7 +42,7 @@ colD2_HF='AE'
 
 '''path to this file'''
 path=os.path.dirname(os.path.realpath(__file__))
-
+pathorigin=path
 '''excel file name to open with path'''
 #excelFilePathName='/propagatorFilesExcel.xlsx'
 excelFilePathName='/Propagator_diag.xlsx'
@@ -91,7 +90,7 @@ def writeDataToExcel(worksheet, row, fileInformation,orbital,hf,ovgf_a, ovgf_a_p
     worksheet[colLargestAbelianSubgroup+str(row)]=largestAbelianSubgroup
     worksheet[colLargestConciseAbelianSubgroup+str(row)]=largestConciseAbelianSubgroup
     
-    workbook.save(path + excelFilePathName)     #saves file
+    #workbook.save(path + excelFilePathName)     #saves file
     
 def numberOfBasisSets(logarray):
     '''returns a list of the split log arrays by basis set. length is number of basis sets'''
@@ -250,4 +249,6 @@ def dataExtract(path):
             p3,p3_plus,d2, ovgf_a_hf,ovgf_b_hf,ovgf_c_hf,\
             ovgf_recommend_hf,p3_hf,p3_plus_hf,d2_hf,molecule,charge,multiplicity,basis,\
             fullPointGroup,largestAbelianSubgroup,largestConciseAbelianSubgroup,p3_ps,p3_plus_ps,d2_ps)
-            row+=1               
+            row+=1 
+             
+    workbook.save(pathorigin + excelFilePathName)     #saves file
