@@ -1,7 +1,8 @@
 import os
 #import xlsxwriter
-#import re
+import re
 import openpyxl
+workbook = openpyxl.Workbook()
 
 
 #TO BE CHANGED
@@ -57,39 +58,46 @@ def writeDataToExcel(worksheet, row, fileInformation,orbital,hf,ovgf_a, ovgf_a_p
             p3,p3_plus,d2, ovgf_a_hf,ovgf_b_hf,ovgf_c_hf,\
             ovgf_recommend_hf,p3_hf,p3_plus_hf,d2_hf,molecule,charge,multiplicity,\
             basis,fullPointGroup,largestAbelianSubgroup,largestConciseAbelianSubgroup,p3_ps,p3_plus_ps,d2_ps):
-            
     
-    worksheet.write(row, colFile, fileInformation)
-    worksheet.write(row, colOrbital, orbital)
-    worksheet.write(row, colHF, hf)
-    worksheet.write(row, colOVGF_A, ovgf_a)
-    worksheet.write(row, colOVGF_B, ovgf_b)
-    worksheet.write(row, colOVGF_C, ovgf_c)
-    worksheet.write(row, colOVGF_A_ps, ovgf_a_ps)
-    worksheet.write(row, colOVGF_B_ps, ovgf_b_ps)
-    worksheet.write(row, colOVGF_C_ps, ovgf_c_ps)
-    worksheet.write(row, colOVGF_Recommended, ovgf_recommend)
-    worksheet.write(row, colOVGF_Recommended_ps, ovgf_recommended_ps)
-    worksheet.write(row, colP3, p3)
-    worksheet.write(row, colP3_ps, p3_ps)
-    worksheet.write(row, colP3_plus, p3_plus)
-    worksheet.write(row, colP3_plus_ps, p3_plus_ps)
-    worksheet.write(row, colD2, d2)
-    worksheet.write(row, colD2_ps, d2_ps)
-    worksheet.write(row, colOVGF_A_HF, ovgf_a_hf)
-    worksheet.write(row, colOVGF_B_HF, ovgf_b_hf)
-    worksheet.write(row, colOVGF_C_HF, ovgf_c_hf)
-    worksheet.write(row, colOVGF_Recommended_HF, ovgf_recommend_hf)
-    worksheet.write(row, colP3_HF,p3_hf)
-    worksheet.write(row, colP3_plus_HF, p3_plus_hf)
-    worksheet.write(row, colD2_HF, d2_hf)
-    worksheet.write(row, colMolecule, molecule)
-    worksheet.write(row, colCharge, charge)
-    worksheet.write(row, colMultiplicity, multiplicity)
-    worksheet.write(row, colBasis, basis)
-    worksheet.write(row, colFullPointGroup, fullPointGroup)
-    worksheet.write(row, colLargestAbelianSubgroup, largestAbelianSubgroup)
-    worksheet.write(row, colLargestConciseAbelianSubgroup, largestConciseAbelianSubgroup)
+    worksheet[colFile+str(row)]=fileInformation
+    worksheet[colOrbital+str(row)]=orbital
+    worksheet[colHF+str(row)]=hf
+    worksheet[colOVGF_A+str(row)]=ovgf_a
+    
+    worksheet[colOVGF_B+str(row)]=ovgf_b
+    worksheet[colOVGF_C+str(row)]=ovgf_c
+    worksheet[colOVGF_A_ps+str(row)]=ovgf_a_ps
+    worksheet[colOVGF_B_ps+str(row)]=ovgf_b_ps
+    worksheet[colOVGF_C_ps+str(row)]=ovgf_c_ps
+    
+    worksheet[colOVGF_Recommended+str(row)]=ovgf_recommend
+    worksheet[colOVGF_Recommended_ps+str(row)]=ovgf_recommended_ps
+    worksheet[colP3+str(row)]=p3
+    worksheet[colP3_ps+str(row)]=p3_ps
+    worksheet[colP3_plus+str(row)]=p3_plus
+    
+    worksheet[colP3_plus_ps+str(row)]=p3_plus_ps
+    worksheet[colD2+str(row)]=d2
+    worksheet[colD2_ps+str(row)]=d2_ps
+    worksheet[colOVGF_A_HF+str(row)]=ovgf_a_hf
+    worksheet[colOVGF_B_HF+str(row)]=ovgf_b_hf
+    
+    worksheet[colOVGF_C_HF+str(row)]=ovgf_c_hf
+    worksheet[colOVGF_Recommended_HF+str(row)]=ovgf_recommend_hf
+    worksheet[colP3_HF+str(row)]=p3_hf
+    worksheet[colP3_plus_HF+str(row)]=p3_plus_hf
+    worksheet[colD2_HF+str(row)]=d2_hf
+    
+    worksheet[colMolecule+str(row)]=molecule
+    worksheet[colCharge+str(row)]=charge
+    worksheet[colMultiplicity+str(row)]=multiplicity
+    worksheet[colBasis+str(row)]=basis
+    worksheet[colFullPointGroup+str(row)]=fullPointGroup
+    
+    worksheet[colLargestAbelianSubgroup+str(row)]=largestAbelianSubgroup
+    worksheet[colLargestConciseAbelianSubgroup+str(row)]=largestConciseAbelianSubgroup
+    
+    workbook.save(path + excelFilePathName)
     
 def numberOfBasisSets(logarray):
     '''returns a list of the split log arrays by basis set. length is number of basis sets'''
@@ -112,7 +120,7 @@ def numberOfBasisSets(logarray):
 
 def dataExtract(path):
     #workbook = openpyxl.Workbook(path + excelFilePathName)
-    workbook = openpyxl.Workbook()
+
     worksheet=workbook.active
     worksheet.title="PROPAGATOR"
     
@@ -157,10 +165,11 @@ def dataExtract(path):
     worksheet[colP3_HF+'1']='P3-HF'
     worksheet[colP3_plus_HF+'1']='P3+-HF'
     worksheet[colD2_HF+'1']='D2-HF'
-    workbook.save(path + excelFilePathName)
-    '''
     
-    row=1
+    
+    
+    row=2
+    
     
     logFiles=[]
 
@@ -258,6 +267,8 @@ def dataExtract(path):
             ovgf_recommend_hf,p3_hf,p3_plus_hf,d2_hf,molecule,charge,multiplicity,basis,\
             fullPointGroup,largestAbelianSubgroup,largestConciseAbelianSubgroup,p3_ps,p3_plus_ps,d2_ps)
             row+=1
+    workbook.save(path + excelFilePathName)
                 
         
-'''
+
+    
