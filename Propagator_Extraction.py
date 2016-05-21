@@ -42,7 +42,7 @@ colD2_HF='AE'
 
 '''path to this file'''
 path=os.path.dirname(os.path.realpath(__file__))
-pathorigin=path
+pathorigin=path     #used to save workbook in this location
 '''excel file name to open with path'''
 #excelFilePathName='/propagatorFilesExcel.xlsx'
 excelFilePathName='/Propagator_diag.xlsx'
@@ -89,8 +89,6 @@ def writeDataToExcel(worksheet, row, fileInformation,orbital,hf,ovgf_a, ovgf_a_p
     worksheet[colFullPointGroup+str(row)]=fullPointGroup
     worksheet[colLargestAbelianSubgroup+str(row)]=largestAbelianSubgroup
     worksheet[colLargestConciseAbelianSubgroup+str(row)]=largestConciseAbelianSubgroup
-    
-    #workbook.save(path + excelFilePathName)     #saves file
     
 def numberOfBasisSets(logarray):
     '''returns a list of the split log arrays by basis set. length is number of basis sets'''
