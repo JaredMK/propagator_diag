@@ -1,52 +1,53 @@
 import os
-import xlsxwriter
-import re
+#import xlsxwriter
+#import re
 import openpyxl
+
 
 #TO BE CHANGED
 '''folder containing the propagator files'''
 propagatorFilesFolder='/Jared_Propa'
 
-colFile=0
-colMolecule=1
-colFullPointGroup=2
-colLargestAbelianSubgroup=3
-colLargestConciseAbelianSubgroup=4
-colCharge=5
-colMultiplicity=6
-colBasis=7
-colOrbital=8
-colHF=9
-colOVGF_A=10
-colOVGF_A_ps=11
-colOVGF_B=12
+colFile='A'
+colMolecule='B'
+colFullPointGroup='C'
+colLargestAbelianSubgroup='D'
+colLargestConciseAbelianSubgroup='E'
+colCharge='F'
+colMultiplicity='G'
+colBasis='H'
+colOrbital='I'
+colHF='J'
+colOVGF_A='K'
+colOVGF_A_ps='L'
+colOVGF_B='M'
 
-colOVGF_B_ps=13
-colOVGF_C=14
-colOVGF_C_ps=15
-colOVGF_Recommended=16
-colOVGF_Recommended_ps=17
-colP3=18
-colP3_ps=19
-colP3_plus=20
-colP3_plus_ps=21
-colD2=22
-colD2_ps=23
-colOVGF_A_HF=24
-colOVGF_B_HF=25
-colOVGF_C_HF=26
-colOVGF_Recommended_HF=27
-colP3_HF=28
-colP3_plus_HF=29
-colD2_HF=30
+colOVGF_B_ps='N'
+colOVGF_C='O'
+colOVGF_C_ps='P'
+colOVGF_Recommended='Q'
+colOVGF_Recommended_ps='R'
+colP3='S'
+colP3_ps='T'
+colP3_plus='U'
+colP3_plus_ps='V'
+colD2='W'
+colD2_ps='X'
+colOVGF_A_HF='Y'
+colOVGF_B_HF='Z'
+colOVGF_C_HF='AA'
+colOVGF_Recommended_HF='AB'
+colP3_HF='AC'
+colP3_plus_HF='AD'
+colD2_HF='AE'
 
 '''path to this file'''
 path=os.path.dirname(os.path.realpath(__file__))
 #/Users/Jared/Dropbox/Auburn/Research/Second_Research/Propagator
 
 '''excel file name to open with path'''
-excelFilePathName='/propagatorFilesExcel.xlsx'
-
+#excelFilePathName='/propagatorFilesExcel.xlsx'
+excelFilePathName='/testingopenpyxl.xlsx'
 
 
 row=1
@@ -110,42 +111,54 @@ def numberOfBasisSets(logarray):
     return logsToReturn
 
 def dataExtract(path):
-    workbook = xlsxwriter.Workbook(path + excelFilePathName)
-    worksheet = workbook.add_worksheet('Propagator')
+    #workbook = openpyxl.Workbook(path + excelFilePathName)
+    workbook = openpyxl.Workbook()
+    worksheet=workbook.active
+    worksheet.title="PROPAGATOR"
     
-    bold = workbook.add_format({'bold': True})
+    #worksheet = workbook.create_sheet('Propagator')
     
-    worksheet.write(0, colFile, 'File', bold)
-    worksheet.write(0, colMolecule, 'Molecule', bold)
-    worksheet.write(0, colFullPointGroup, 'Full Point Group', bold)
-    worksheet.write(0, colLargestAbelianSubgroup, 'Largest Abelian Subgroup', bold)
-    worksheet.write(0, colLargestConciseAbelianSubgroup, 'Largest Concise Abelian Subgroup', bold)
-    worksheet.write(0, colCharge, 'Charge', bold)
-    worksheet.write(0, colMultiplicity, 'Multiplicity', bold)
-    worksheet.write(0, colBasis, 'Basis', bold)
-    worksheet.write(0, colOrbital, 'Orbital', bold)
-    worksheet.write(0, colHF, 'HF', bold)
-    worksheet.write(0, colOVGF_A, 'OVGF A', bold)
-    worksheet.write(0, colOVGF_A_ps, 'OVGF A PS', bold)
-    worksheet.write(0, colOVGF_B, 'OVGF B', bold)
-    worksheet.write(0, colOVGF_B_ps, 'OVGF B PS', bold)
-    worksheet.write(0, colOVGF_C, 'OVGF C', bold)
-    worksheet.write(0, colOVGF_C_ps, 'OVGF C PS', bold)
-    worksheet.write(0, colOVGF_Recommended, 'OVGF Recommended', bold)
-    worksheet.write(0, colOVGF_Recommended_ps, 'OVGF Recommended PS', bold)
-    worksheet.write(0, colP3, 'P3', bold)
-    worksheet.write(0, colP3_ps, 'P3 PS', bold)
-    worksheet.write(0, colP3_plus, 'P3+', bold)
-    worksheet.write(0, colP3_plus_ps, 'P3+ PS', bold)
-    worksheet.write(0, colD2, 'D2', bold)
-    worksheet.write(0, colD2_ps, 'D2 PS', bold)
-    worksheet.write(0, colOVGF_A_HF, 'OVGF A-HF', bold)
-    worksheet.write(0, colOVGF_B_HF, 'OVGF B-HF', bold)
-    worksheet.write(0, colOVGF_C_HF, 'OVGF C-HF', bold)
-    worksheet.write(0, colOVGF_Recommended_HF, 'OVGF-Recommended-HF', bold)
-    worksheet.write(0, colP3_HF, 'P3-HF', bold)
-    worksheet.write(0, colP3_plus_HF, 'P3+-HF', bold)
-    worksheet.write(0, colD2_HF, 'D2-HF', bold)
+    #bold = workbook.add_format({'bold': True})
+    
+    worksheet[colFile+'1']='File'
+    worksheet[colMolecule+'1']='Molecule'
+    worksheet[colFullPointGroup+'1']='Full Point Group'
+    
+    worksheet[colLargestAbelianSubgroup+'1']='Largest Abelian Subgroup'
+    worksheet[colLargestConciseAbelianSubgroup+'1']='Largest Concise Abelian Subgroup'
+    
+    worksheet[colCharge+'1']='Charge'
+    worksheet[colMultiplicity+'1']='Multiplicity'
+    worksheet[colBasis+'1']='Basis'
+    worksheet[colOrbital+'1']='Orbital'
+    worksheet[colHF+'1']='HF'
+    
+    worksheet[colOVGF_A+'1']='OVGF A'
+    worksheet[colOVGF_A_ps+'1']='OVGF A PS'
+    worksheet[colOVGF_B+'1']='OVGF B'
+    
+    worksheet[colOVGF_B_ps+'1']='OVGF B PS'
+    worksheet[colOVGF_C+'1']='OVGF C'
+    worksheet[colOVGF_C_ps+'1']='OVGF C PS'
+    worksheet[colOVGF_Recommended+'1']='OVGF Recommended'
+    worksheet[colOVGF_Recommended_ps+'1']='OVGF Recommended PS'
+    
+    worksheet[colP3+'1']='P3'
+    worksheet[colP3_ps+'1']='P3 PS'
+    worksheet[colP3_plus+'1']='P3+'
+    worksheet[colP3_plus_ps+'1']='P3+ PS'
+    
+    worksheet[colD2+'1']='D2'
+    worksheet[colD2_ps+'1']='D2 PS'
+    worksheet[colOVGF_A_HF+'1']='OVGF A-HF'
+    worksheet[colOVGF_B_HF+'1']='OVGF B-HF'
+    worksheet[colOVGF_C_HF+'1']='OVGF C-HF'
+    worksheet[colOVGF_Recommended_HF+'1']='OVGF-Recommended-HF'
+    worksheet[colP3_HF+'1']='P3-HF'
+    worksheet[colP3_plus_HF+'1']='P3+-HF'
+    worksheet[colD2_HF+'1']='D2-HF'
+    workbook.save(path + excelFilePathName)
+    '''
     
     row=1
     
@@ -247,3 +260,4 @@ def dataExtract(path):
             row+=1
                 
         
+'''
